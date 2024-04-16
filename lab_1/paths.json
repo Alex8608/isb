@@ -1,0 +1,8 @@
+{
+    "input1" : "original_text_1.txt",
+    "key1" : "key_1.json",
+    "encrypted" : "encrypted_text_1.txt",
+    "input2" : "encrypted_text_2.txt",
+    "key2" : "key_2.json",
+    "decrypted" : "original_text_2.txt"
+  }
