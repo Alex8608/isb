@@ -14,7 +14,7 @@
 
 Были реализованы 3 теста линейки NIST, результаты тестов записаны в отдельный [файл](https://github.com/Alex8608/isb/blob/lab2-var3/lab_2/info.txt).
 
-Код тестов: [test.py](https://github.com/Alex8608/isb/blob/lab2-var3/lab_2/tests.py)
+Код тестов: [tests.py](https://github.com/Alex8608/isb/blob/lab2-var3/lab_2/tests.py)
 
 ### Результаты тестов
 ### C++
