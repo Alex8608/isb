@@ -28,6 +28,6 @@ int main() {
     int n;
     cout << "Enter number of bits for sequence: "; // we need use 128-bit sequence
     cin >> n;
-    generate_binary_sequence(n);
+    generating_binary_sequence(n);
     return 0;
 }
