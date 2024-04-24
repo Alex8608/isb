@@ -35,8 +35,8 @@ def same_consecutive_bits_test(sequence: str) -> float:
             return 0
         v_n = 0
         v_n += sum(1 if sequence[i] != sequence[i + 1] else 0 for i in range(len(sequence) - 1))
-        p_value = math.erfc(abs(v_n - 2 * len(sequence) * fate_of_ones * (1 - fate_of_ones)) / (
-                2 * math.sqrt(2 * len(sequence)) * fate_of_ones * (1 - fate_of_ones)))
+        p_value = math.erfc(abs(v_n - 2 * len(sequence) * fate_of_ones * (1 - fate_of_ones)) /
+                            (2 * math.sqrt(2 * len(sequence)) * fate_of_ones * (1 - fate_of_ones)))
         return p_value
     except Exception as e:
         logging.error(f"Error in same_consecutive_bits_test: {e}\n")
@@ -72,11 +72,10 @@ def longest_sequence_in_block_test(sequence: str) -> float:
 if __name__ == "__main__":
     sequences = json_reader(SEQUENCES_PATH)
 
-    logging.info("frequency bitwise test result for C++: %s", frequency_bitwise_test(sequences["cpp"]))
-    logging.info("same consecutive bits test result for C++: %s", same_consecutive_bits_test(sequences["cpp"]))
-    logging.info("longest sequence in block test result for C++: %s", longest_sequence_in_block_test(sequences["cpp"]))
+    logging.info(f"frequency bitwise test result for C++: {frequency_bitwise_test(sequences['cpp'])}")
+    logging.info(f"same consecutive bits test result for C++: {same_consecutive_bits_test(sequences['cpp'])}")
+    logging.info(f"longest sequence in block test result for C++: {longest_sequence_in_block_test(sequences['cpp'])}")
 
-    logging.info("frequency bitwise test result for Java: %s", frequency_bitwise_test(sequences["java"]))
-    logging.info("same consecutive bits test result for Java: %s", same_consecutive_bits_test(sequences["java"]))
-    logging.info("longest sequence in block test result for Java: %s",
-                 longest_sequence_in_block_test(sequences["java"]))
+    logging.info(f"frequency bitwise test result for Java: {frequency_bitwise_test(sequences['java'])}")
+    logging.info(f"same consecutive bits test result for Java: {same_consecutive_bits_test(sequences['java'])}")
+    logging.info(f"longest sequence in block test result for Java: {longest_sequence_in_block_test(sequences['java'])}")
