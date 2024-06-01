@@ -5,6 +5,9 @@ logging.basicConfig(level=logging.INFO)
 
 
 class FileWork:
+    """
+    Class for work with files
+    """
     def __init__(self, path: str) -> None:
         """
         Initialization
@@ -13,28 +16,28 @@ class FileWork:
         """
         self.path = path
 
-    def key_serializer(self, key: bytes) -> None:
+    def key_nonce_serializer(self, key: bytes) -> None:
         """
-        Serialize the key and save it to file
-        :param key: bytes - key to be serialized:
+        Serialize the key or nonce and save it to file
+        :param key: bytes - key or nonce to be serialized:
         :return None:
         """
         try:
             with open(self.path, 'wb') as file:
                 file.write(key)
         except Exception as e:
-            logging.error(f"Error in key_serializer - {e}")
+            logging.error(f"Error in key_nonce_serializer - {e}")
 
-    def key_deserializer(self) -> bytes:
+    def key_nonce_deserializer(self) -> bytes:
         """
-        Deserialize the key from a file
-        :return: bytes - deserialized key:
+        Deserialize the key or nonce from a file
+        :return: bytes - deserialized key or nonce:
         """
         try:
             with open(self.path, 'rb') as file:
                 return file.read()
         except Exception as e:
-            logging.error(f"Error in key_deserializer - {e}")
+            logging.error(f"Error in key_nonce_deserializer - {e}")
 
     def txt_reader(self, mode: str, encoding=None) -> str:
         """

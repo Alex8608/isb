@@ -4,5 +4,7 @@
   "private_key": "asymmetric_keys/private.pem",
   "symmetric_key_file": "symmetric_keys/symmetric.txt",
   "encrypted_file": "encrypted.txt",
-  "decrypted_file": "decrypted.txt"
+  "decrypted_file": "decrypted.txt",
+  "sequence_file": "sequence.txt",
+  "nonce_file": "symmetric_keys/nonce.txt"
 }
