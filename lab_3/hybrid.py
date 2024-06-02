@@ -13,14 +13,13 @@ class Hybrid:
     """
 
     def __init__(self, text_path: str, symmetric_key_path: str, encrypted_text_path: str, decrypted_text_path: str,
-                 nonce_path: str, symmetric_class: Symmetric, asymmetric_class: Asymmetric) -> None:
+                 symmetric_class: Symmetric, asymmetric_class: Asymmetric) -> None:
         """
         Initialize HybridCryptograpy object with necessary paths and key length
         :param text_path: str - path to initial file:
         :param symmetric_key_path: str - path to symmetric key file:
         :param encrypted_text_path: str - path to encrypted text file:
         :param decrypted_text_path: str - path to decrypted text file:
-        :param nonce_path: str - path to nonce file:
         :param symmetric_class: Symmetric - class instance for working with symmetric cryptography:
         :param asymmetric_class: Asymmetric - class instance for working with asymmetric cryptography:
         :return None:
@@ -29,7 +28,6 @@ class Hybrid:
         self.symmetric_key_path = symmetric_key_path
         self.encrypted_text_path = encrypted_text_path
         self.decrypted_text_path = decrypted_text_path
-        self.nonce_path = nonce_path
         self.symmetric_class = symmetric_class
         self.asymmetric_class = asymmetric_class
 
@@ -65,7 +63,7 @@ class Hybrid:
             text = bytes(text_file.txt_reader("r", "UTF-8"), "UTF-8")
             encrypted_text = self.symmetric_class.encrypt_text(encrypted_symmetric_key, text)
             encrypted_text_file = FileWork(self.encrypted_text_path)
-            encrypted_text_file.txt_writer(str(encrypted_text))
+            encrypted_text_file.txt_writer(encrypted_text)
             logging.info("Text successfully encrypted and serialized")
         except Exception as e:
             logging.error(f"Error in encrypt_text (Hybrid): {e}")
@@ -84,7 +82,7 @@ class Hybrid:
             encrypted_text = bytes(encrypted_text_file.txt_reader("rb"))
             decrypted_text = self.symmetric_class.decrypt_text(encrypted_symmetric_key, encrypted_text)
             decrypted_text_file = FileWork(self.decrypted_text_path)
-            decrypted_text_file.txt_writer(str(decrypted_text))
+            decrypted_text_file.txt_writer(decrypted_text)
             logging.info("Text successfully decrypted and serialized")
         except Exception as e:
             logging.error(f"Error in decrypt_text (Hybrid): {e}")
