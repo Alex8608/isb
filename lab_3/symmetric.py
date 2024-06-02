@@ -49,7 +49,7 @@ class Symmetric:
             return encryptor.update(text)
 
         except Exception as e:
-            logging.error(f"Error in encrypt_text - {e}")
+            logging.error(f"Error in encrypt_text (Symmetric) - {e}")
 
     def decrypt_text(self, symmetric_key: bytes, text: bytes) -> bytes:
         """
@@ -65,4 +65,4 @@ class Symmetric:
             return decrypter.update(text)
 
         except Exception as e:
-            logging.error(f"Error in decrypt_text - {e}")
+            logging.error(f"Error in decrypt_text (Symmetric) - {e}")

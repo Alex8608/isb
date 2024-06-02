@@ -26,7 +26,7 @@ class FileWork:
             with open(self.path, 'wb') as file:
                 file.write(key)
         except Exception as e:
-            logging.error(f"Error in key_nonce_serializer - {e}")
+            logging.error(f"Error in key_nonce_serializer (FileWork) - {e}")
 
     def key_nonce_deserializer(self) -> bytes:
         """
@@ -37,7 +37,7 @@ class FileWork:
             with open(self.path, 'rb') as file:
                 return file.read()
         except Exception as e:
-            logging.error(f"Error in key_nonce_deserializer - {e}")
+            logging.error(f"Error in key_nonce_deserializer (FileWork) - {e}")
 
     def txt_reader(self, mode: str, encoding=None) -> str:
         """
@@ -50,7 +50,7 @@ class FileWork:
             with open(self.path, mode=mode, encoding=encoding) as file:
                 return file.read()
         except Exception as e:
-            logging.error(f"Error in txt_reader - {e}")
+            logging.error(f"Error in txt_reader (FileWork) - {e}")
 
     def txt_writer(self, string: str) -> None:
         """
@@ -62,7 +62,7 @@ class FileWork:
             with open(self.path, 'wb') as file:
                 file.write(string)
         except Exception as e:
-            logging.error(f"Error in txt_writer - {e}")
+            logging.error(f"Error in txt_writer (FileWork) - {e}")
 
     def json_reader(self) -> dict:
         """
@@ -74,4 +74,4 @@ class FileWork:
                 paths = json.load(file)
             return paths
         except Exception as e:
-            logging.error(f"Error in json_reader - {e}")
+            logging.error(f"Error in json_reader (FileWork) - {e}")

@@ -46,7 +46,7 @@ class Asymmetric:
                                                      format=serialization.PrivateFormat.TraditionalOpenSSL,
                                                      encryption_algorithm=serialization.NoEncryption()))
         except Exception as e:
-            logging.error(f"Error in serialize_private_key - {e}")
+            logging.error(f"Error in serialize_private_key (Asymmetric) - {e}")
 
     def serialize_public_key(self, public_key: rsa.RSAPublicKey) -> None:
         """
@@ -59,7 +59,7 @@ class Asymmetric:
                 file.write(public_key.public_bytes(encoding=serialization.Encoding.PEM,
                                                    format=serialization.PublicFormat.SubjectPublicKeyInfo))
         except Exception as e:
-            logging.error(f"Error in serialize_public_key - {e}")
+            logging.error(f"Error in serialize_public_key (Asymmetric) - {e}")
 
     def deserialize_private_key(self) -> rsa.RSAPrivateKey:
         """
@@ -70,7 +70,7 @@ class Asymmetric:
             with open(self.private_key_path, 'rb') as file:
                 return serialization.load_pem_private_key(file.read(), password=None)
         except Exception as e:
-            logging.error(f"Error in deserialize_private_key - {e}")
+            logging.error(f"Error in deserialize_private_key (Asymmetric) - {e}")
 
     def deserialize_public_key(self) -> rsa.RSAPublicKey:
         """
@@ -81,7 +81,7 @@ class Asymmetric:
             with open(self.public_key_path, 'rb') as file:
                 return serialization.load_pem_public_key(file.read())
         except Exception as e:
-            logging.error(f"Error in deserialize_public_key - {e}")
+            logging.error(f"Error in deserialize_public_key (Asymmetric) - {e}")
 
     @staticmethod
     def decrypt_with_private_key(private_key: rsa.RSAPrivateKey, text: bytes) -> bytes:
