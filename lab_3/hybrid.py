@@ -39,8 +39,8 @@ class Hybrid:
         try:
             symmetric_key = self.symmetric_class.generate_key()
             private_key, public_key = self.asymmetric_class.generate_key_pair(2048)
-            self.asymmetric_class.serialize_private_key(private_key)
-            self.asymmetric_class.serialize_public_key(public_key)
+            FileWork(self.asymmetric_class.private_key_path).serialize_private_key(private_key)
+            FileWork(self.asymmetric_class.public_key_path).serialize_public_key(public_key)
             encrypted_symmetric_key = self.asymmetric_class.encrypt_with_public_key(public_key, symmetric_key)
             key = FileWork(self.symmetric_key_path)
             key.key_nonce_serializer(encrypted_symmetric_key)
@@ -58,7 +58,7 @@ class Hybrid:
             key_file = FileWork(self.symmetric_key_path)
             encrypted_symmetric_key = key_file.key_nonce_deserializer()
             encrypted_symmetric_key = self.asymmetric_class.decrypt_with_private_key(
-                self.asymmetric_class.deserialize_private_key(), encrypted_symmetric_key)
+                FileWork(self.asymmetric_class.private_key_path).deserialize_private_key(), encrypted_symmetric_key)
             text_file = FileWork(self.text_path)
             text = bytes(text_file.txt_reader("r", "UTF-8"), "UTF-8")
             encrypted_text = self.symmetric_class.encrypt_text(encrypted_symmetric_key, text)
@@ -77,7 +77,7 @@ class Hybrid:
             key_file = FileWork(self.symmetric_key_path)
             encrypted_symmetric_key = key_file.key_nonce_deserializer()
             encrypted_symmetric_key = self.asymmetric_class.decrypt_with_private_key(
-                self.asymmetric_class.deserialize_private_key(), encrypted_symmetric_key)
+                FileWork(self.asymmetric_class.private_key_path).deserialize_private_key(), encrypted_symmetric_key)
             encrypted_text_file = FileWork(self.encrypted_text_path)
             encrypted_text = bytes(encrypted_text_file.txt_reader("rb"))
             decrypted_text = self.symmetric_class.decrypt_text(encrypted_symmetric_key, encrypted_text)
